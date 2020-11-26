@@ -112,7 +112,7 @@ background: linear-gradient(50deg, rgba(16,18,59,1) 18%, rgba(70,181,209,1) 100%
                 Get Started
             </div>
             </div>
-            <img id="laptopsvg" src='/svgs/laptopsvg.svg' />
+            <img id="laptopsvg" src='/svgs/Laptopsvg.svg' />
           </div>
 
           <section id="about-section">

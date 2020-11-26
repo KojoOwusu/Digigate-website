@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&family=Ultra&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Corben:wght@700&family=Coustard:wght@900&display=swap");
+
+.mainwrapper {
+	background: linear-gradient(354deg, rgba(21, 25, 101, 1) 0%, rgba(11, 13, 51, 1) 100%);
+	width: 100vw;
+	height: 900vh;
+	top: 0;
+}
+.mainwrapper h1 {
+	font-family: "ultra", serif;
+	font-size: 3.5vw;
+	line-height: 50%;
+	font-weight: bolder;
+	color: white;
+}
+.mainwrapper h2 {
+	font-family: "ultra", serif;
+	font-size: 3.2vw;
+	color: var(--lightblue);
+}
+.bodycontainer {
+	width: inherit;
+	height: 98.7%;
+	position: relative;
+	padding-left: 5rem;
+	padding-right: 5rem;
+	overflow: hidden;
+}
+.maintextcontainer {
+	position: relative;
+	float: left;
+	height: 100%;
+	clear: both;
+	overflow: auto;
+	top: 0.5%;
+	width: 50%;
+	padding-top: 5.5rem;
+}
+
+.maintextcontainer .bannertext h1 {
+	color: #46b5d1;
+	font-size: 3.7vw;
+}
+
+.maintextcontainer p {
+	width: 90%;
+	color: rgba(201, 211, 253, 0.33);
+	font-size: 1.3vw;
+	text-align: left;
+	margin-top: 5vh;
+}
+
+.bodycontainer img {
+	position: absolute;
+}
+
+.maintextcontainer .getstartedbutton {
+	border-style: solid;
+	border-color: #8b99d1;
+	border-width: 5px;
+	width: 15%;
+	color: #8b99d1;
+	font-size: 1.2vw;
+	margin-top: 4rem;
+	text-align: center;
+	width: 15vw;
+	padding: 1.4vw 2vw;
+	border-radius: 1rem;
+}
+
+.maintextcontainer .getstartedbutton:hover {
+	border-style: solid;
+	background-color: #8b99d1;
+	color: rgb(12, 15, 53);
+	transition: 0.3s ease;
+}

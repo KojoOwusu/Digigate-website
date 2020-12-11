@@ -1,0 +1,66 @@
+.navbar {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	width: 100%;
+	background-color: rgba(11, 14, 49, 0);
+	z-index: 4;
+}
+
+.container {
+	color: #ffffff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-size: 1.1vw;
+	font-family: "Roboto";
+	padding-left: 5rem;
+	padding-right: 5rem;
+	align-items: center;
+	padding-top: 1.2rem;
+}
+
+.navbar .logo img {
+	width: 4vw;
+	height: auto;
+}
+.navbar .container ul {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+}
+
+.navbar ul > li,
+.navbar ul > li:before,
+.navbar ul > li:after {
+	transition: all 3s;
+	padding-left: 3.3rem;
+}
+
+.container .logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 1.3vw;
+}
+
+.navbar .contactbutton {
+	background-color: #ffffff;
+	color: rgb(30, 37, 92);
+	border-style: solid;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	border-radius: 1.7rem;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	font-size: 1vw;
+	text-align: center;
+}
+.navbar .contactbutton:hover {
+	box-sizing: border-box;
+	background-color: rgba(11, 14, 49, 0);
+	transition: all 0.3s ease;
+	border-style: solid;
+	border-color: #ffffff;
+	color: #ffffff;
+}

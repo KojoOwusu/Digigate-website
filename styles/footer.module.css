@@ -1,0 +1,75 @@
+.footer > h3 {
+	color: white;
+	font-size: 2rem;
+}
+.footer {
+	position: relative;
+	padding-top: 5%;
+	padding-left: 8%;
+	width: 100%;
+	padding-right: 8%;
+}
+.footer h3 {
+	color: white;
+}
+.footer h1,
+.footer h2,
+.footer h3,
+.footer p {
+	z-index: 4;
+}
+
+.footer > p {
+	font-size: 1.3rem;
+	color: rgba(255, 255, 255, 0.23);
+}
+.footer .logo {
+	max-width: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	color: white;
+}
+.footer .logo img {
+	position: relative;
+	width: 70%;
+	height: auto;
+}
+.footer .logo > div span:nth-child(1) {
+	font-size: 2rem;
+}
+.footer .logo > div span:nth-child(2) {
+	font-size: 1.3rem;
+}
+.footer .linkscontainer {
+	display: flex;
+	padding-top: 1rem;
+}
+
+.footer .linklist ul {
+	list-style-type: none;
+	list-style: none;
+	list-style-position: inside;
+	padding: 0;
+}
+
+.footer .linklist h3 {
+	font-size: 1.2rem;
+}
+
+.footer .linklist {
+	padding-right: 3rem;
+}
+
+.footer .linklist ul li {
+	color: rgba(255, 255, 255, 0.23);
+	font-size: 1rem;
+	padding-top: 1.4rem;
+}
+#logolist img {
+	position: relative;
+	width: 16%;
+	height: auto;
+	margin-right: 1rem;
+}

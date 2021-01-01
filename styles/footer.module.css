@@ -72,4 +72,9 @@
 	width: 16%;
 	height: auto;
 	margin-right: 1rem;
+	transition: all 0.3s;
+}
+
+#logolist img:hover {
+	opacity: 50%;
 }

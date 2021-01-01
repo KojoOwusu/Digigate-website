@@ -1,10 +1,10 @@
 .navbar {
-	position: sticky;
-	position: -webkit-sticky;
+	position: relative;
 	top: 0;
 	width: 100%;
 	background-color: rgba(11, 14, 49, 0);
 	z-index: 4;
+	transition: all 0.3ms;
 }
 
 .container {
@@ -20,6 +20,53 @@
 	padding-top: 1.2rem;
 }
 
+#navlink {
+	position: relative;
+	transition: all ease 0.4s;
+	padding-bottom: 1rem;
+}
+
+#navlink:after,
+#navlink:before {
+	transition: all ease 0.4s;
+}
+
+#navlink:hover {
+	cursor: pointer;
+	opacity: 80%;
+}
+
+#navlink::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 0%;
+	content: ".";
+	color: transparent;
+	background: white;
+	height: 3px;
+}
+
+#navlink:hover::after {
+	width: 100%;
+}
+
+.linkactive {
+	opacity: 50%;
+}
+
+.navsticky {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 4;
+	transition: all 0.5s ease-in-out;
+	background-color: rgba(11, 14, 49, 1);
+	box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.18);
+}
+
 .navbar .logo img {
 	width: 4vw;
 	height: auto;
@@ -30,11 +77,18 @@
 	align-items: center;
 }
 
+.navsticky .container ul {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+}
+
 .navbar ul > li,
 .navbar ul > li:before,
-.navbar ul > li:after {
+.navbar ul > li:after,
+.navsticky ul > li {
 	transition: all 3s;
-	padding-left: 3.3rem;
+	padding-left: 4.5rem;
 }
 
 .container .logo {
@@ -44,10 +98,11 @@
 	font-size: 1.3vw;
 }
 
-.navbar .contactbutton {
+.navbar .contactbutton,
+.navsticky .contactbutton {
 	background-color: #ffffff;
 	color: rgb(30, 37, 92);
-	border-style: solid;
+	border: solid white;
 	padding-left: 2rem;
 	padding-right: 2rem;
 	border-radius: 1.7rem;
@@ -56,7 +111,9 @@
 	font-size: 1vw;
 	text-align: center;
 }
-.navbar .contactbutton:hover {
+
+.navbar .contactbutton:hover,
+.navsticky .contactbutton:hover {
 	box-sizing: border-box;
 	background-color: rgba(11, 14, 49, 0);
 	transition: all 0.3s ease;

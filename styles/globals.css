@@ -10,8 +10,12 @@ body {
 	font-family: "Roboto", BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans,
 		Droid Sans, Helvetica Neue, sans-serif;
 	overflow-x: hidden;
-	overflow-y: scroll;
-	scroll-behavior: smooth;
+}
+h2,
+h3,
+h1,
+p {
+	z-index: 2;
 }
 
 a {

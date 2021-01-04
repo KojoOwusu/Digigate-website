@@ -1,17 +1,16 @@
 import styles from '../styles/navbar.module.css';
 import { Link, animateScroll as scroll, ScrollLink } from "react-scroll";
-import { motion, AnimatePresence } from 'framer-motion';
 
 
 export default function Navbar(props) {
-    const { scrolledState } = props;
+    const { scrolledState, modalOpenHandler } = props;
 
     return (
 
         <div className={scrolledState ? styles.navsticky : styles.navbar}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <img src='/svgs/Logo.svg' alt="Digigate logo" />
+                    <img src='/svgs/Logo.svg' alt="logo" />
                 Digigate
                 </div>
 
@@ -28,6 +27,7 @@ export default function Navbar(props) {
 
                     </li>
                 </ul>
+                <img src="/svgs/hamburger.svg" alt="hamburger" className={styles.hamburgericon} onClick={modalOpenHandler} />
 
             </div>
 

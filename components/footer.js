@@ -8,8 +8,8 @@ export default function Footer() {
             </h3>
             <p>
                 Pioneering digital solutions for all sectors
-        </p>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: "2%", paddingBottom: "10%" }}>
+            </p>
+            <div className={styles.footercontainer} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: "2%", paddingBottom: "10%" }}>
                 <div className={styles.logo}>
                     <img src='/svgs/Logo.svg' />
                     <div className={styles.logotext}>
@@ -59,7 +59,7 @@ export default function Footer() {
                         </li>
                         </ul>
                     </div>
-                    <div className={styles.linklist}>
+                    <div id={styles.projects} className={styles.linklist}>
                         <h3>
                             Projects
                     </h3>
@@ -75,7 +75,9 @@ export default function Footer() {
                         </h3>
                         <ul>
                             <li>
-                                digigatesolutionsltd@gmail.com
+                                <a href="mailto:digigatesolutionsltd@gmail.com">
+                                    digigatesolutionsltd@gmail.com
+                                </a>
                             </li>
                             <li>
                                 +233 (0) 26 928 7004
@@ -96,7 +98,7 @@ export default function Footer() {
 
                 </div>
             </div>
-            <img src="/svgs/concentric-circle2.svg" style={{ width: "50%", height: "auto", top: "20%", left: "" }} />
+            <img id={styles.concentricBig} src="/svgs/concentric-circle2.svg" style={{ width: "50%", height: "auto", top: "20%", left: "", zIndex: "1" }} />
             <img src="/svgs/concentric-circle2.svg" style={{ width: "10%", height: "auto", top: "5%", right: "10%" }} />
         </div>
     )

@@ -78,3 +78,46 @@
 #logolist img:hover {
 	opacity: 50%;
 }
+
+@media only screen and (max-width: 600px) {
+	.footer {
+		padding: 2rem 1.6rem;
+	}
+
+	.footer h3 {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+	}
+	.footer p {
+		font-size: 0.9rem;
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.footer .footercontainer {
+		flex-wrap: wrap !important;
+	}
+
+	.footer .footercontainer .linkscontainer {
+		justify-content: flex-start;
+		flex-wrap: wrap !important;
+		padding-top: 3.2rem;
+	}
+	#concentricBig {
+		display: none !important;
+	}
+
+	#projects {
+		padding-right: 0rem !important;
+	}
+
+	.footer .logo img {
+		width: 90%;
+	}
+	.footer .logo > div span:nth-child(1) {
+		font-size: 1.3rem;
+	}
+	.footer .logo > div span:nth-child(2) {
+		font-size: 0.9rem;
+	}
+}

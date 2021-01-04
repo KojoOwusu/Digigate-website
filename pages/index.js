@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/landpage.module.css'
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import { motion, useViewportScroll, useAnimation, useTransform } from "framer-motion";
+import { motion, useViewportScroll, useAnimation, useTransform, AnimatePresence } from "framer-motion";
 import { useFormik } from 'formik';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-scroll';
@@ -13,13 +13,14 @@ import { useInView, InView } from 'react-intersection-observer';
 export default function Landingpage() {
 
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const controls = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
   const controls4 = useAnimation();
   const { scrollYProgress } = useViewportScroll();
-  const longdotsAnimation = useTransform(scrollYProgress, [0, 0.4], [0, 1000]);
-  const longdotsfade = useTransform(scrollYProgress, [0, 0.4], ["100%", "0%"]);
+  const longdotsAnimation = useTransform(scrollYProgress, [0, 0.3], [0, 1000]);
+  const longdotsfade = useTransform(scrollYProgress, [0, 0.3], ["100%", "0%"]);
   const svgElement = useRef(null);
 
 
@@ -44,6 +45,16 @@ export default function Landingpage() {
     transition: {
       duration: 2
     }
+  }
+
+  const tinySvg = {
+    hidden: { y: -20 },
+    visible: { y: 0 }, transition: { duration: 2 }
+  }
+
+  const tinySvg1 = {
+    hidden: { y: -20, rotate: 60 },
+    visible: { y: 0, rotate: 60 }, transition: { duration: 2 }
   }
 
   const childAnimation = {
@@ -103,6 +114,27 @@ export default function Landingpage() {
     }
   }
 
+  const modalVariant = {
+    hidden: {
+      y: -500
+    },
+    visible: {
+      y: 0
+    },
+    staggerChildren: 1
+  }
+
+  const liVariant = {
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  }
+
   const underlineVariant = {
     hidden: {
       width: "1%"
@@ -149,6 +181,10 @@ export default function Landingpage() {
     }
   }
 
+  const modalHandler = () => {
+    setIsOpen(true);
+  }
+
   const scrollSticky = () => {
     if (window.scrollY > 200) {
       setScrolled(true);
@@ -190,7 +226,7 @@ export default function Landingpage() {
   })
 
   return (
-    <div>
+    <div className={isOpen ? styles.modalopen : false}>
       <style jsx>
         {`
           
@@ -212,9 +248,38 @@ export default function Landingpage() {
           Digigate Solutions: pioneering digital solutions
         </title>
       </Head>
-      <div className={styles.mainwrapper} >
-        <Navbar scrolledState={scrolled} />
-        <motion.img initial={{ x: -1025 }} animate={{ x: 0 }} transition={{ duration: 2, ease: [0.4, 0.01, -0.05, 0.9] }} src='/svgs/first curve.svg' style={{ position: "absolute", top: "-6rem", right: "-20rem", width: "70%", height: "auto", zIndex: 1, minWidth: "50%" }} />
+      <div className={styles.mainwrapper}>
+        <AnimatePresence>
+          {
+            isOpen && (
+              <div className={styles.modalContainer} onClick={() => { setIsOpen(false) }}>
+                <motion.div variants={modalVariant} initial="hidden" animate="visible" exit={{ y: -500 }} transition={{ duration: 0.5 }} className={styles.modal}>
+                  <ul>
+                    <motion.li variants={liVariant} initial="hidden" animate="visible" transition={{ delay: 0.6 }} ease="easeIn">
+                      <Link onClick={() => { setIsOpen(false) }} to="home">Home</Link>
+                    </motion.li>
+                    <motion.li variants={liVariant} initial="hidden" animate="visible" transition={{ delay: 0.8 }} ease="easeIn">
+                      <Link onClick={() => { setIsOpen(false) }} to="about-section">About</Link>
+                    </motion.li>
+                    <motion.li variants={liVariant} initial="hidden" animate="visible" transition={{ delay: 1 }} ease="easeIn">
+                      <Link onClick={() => { setIsOpen(false) }} to="services">Services</Link>
+                    </motion.li>
+                    <motion.li variants={liVariant} initial="hidden" animate="visible" transition={{ delay: 1.2 }} ease="easeIn">
+                      <Link onClick={() => { setIsOpen(false) }} to="contact-us">
+                        Contact us
+                </Link>
+                    </motion.li>
+                  </ul>
+                  <img src="/svgs/cancel.svg" onClick={() => { setIsOpen(false) }} />
+                </motion.div >
+              </div>
+            )
+
+          }
+        </AnimatePresence>
+
+        <Navbar scrolledState={scrolled} modalOpenHandler={modalHandler} />
+        <motion.img initial={{ x: -1025 }} animate={{ x: 0 }} transition={{ duration: 2, ease: [0.4, 0.01, -0.05, 0.9] }} src='/svgs/first curve.svg' className={styles.giantCurve} style={{ position: "absolute", top: "-6rem", right: "-20rem", width: "70%", height: "auto", zIndex: 1, minWidth: "50%" }} />
         <div className={styles.bodycontainer} >
           <section id="home" className={scrolled ? styles.mainsectionpadded : styles.mainsectionstyles} >
             <motion.div initial={{ x: -100, opacity: 0 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className={styles.maintextcontainer}>
@@ -224,7 +289,7 @@ export default function Landingpage() {
               <p>
                 Developing advanced software solutions for companies around the world. We believe in innovation and technology.
               </p>
-              <Link delay={2000} to="contact-us" style={{ display: "inline-block", width: "40%" }}>
+              <Link delay={2000} to="contact-us" className={styles.LinkButton}>
                 <motion.div whileTap={{
                   scale: 0.8
                 }} className={styles.getstartedbutton}>
@@ -242,7 +307,7 @@ export default function Landingpage() {
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/inclined lines.svg' style={{ top: "6em", left: "33%", width: "8%", height: "auto", opacity: "50%" }} />
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/plus2.svg' style={{ top: "7rem", right: "20%", width: "1%", height: "auto" }} />
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/dottriangle2.svg' style={{ top: "5rem", right: "8%", width: "2.5%", height: "auto" }} />
-            <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/plus2.svg' style={{ top: "55%", right: "2%", width: "1rem", height: "auto" }} />
+            <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/plus2.svg' style={{ top: "55%", right: "2%", width: "1%", height: "auto" }} />
 
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/plus.svg' style={{ bottom: "8.5%", left: "25%", width: "1.3%", height: "auto" }} />
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/dots 2.svg' style={{ top: "70%", right: "45%", width: "12%", height: "auto" }} />
@@ -255,41 +320,40 @@ export default function Landingpage() {
               Who Are We?
            </motion.h2>
 
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "3rem" }}>
+            <div className={styles.aboutuscontainer}>
               <motion.div variants={childAnimation} initial="hidden" animate={controls} transition={{ duration: 1, delay: 0.5 }} className={styles.aboutus} style={{ flex: 1 }}>
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "80%" }}>
+                <div className={styles.logo}>
                   <div>
-                    <img src="/svgs/Logo.svg" style={{ flex: 1, width: "130%", height: "auto", position: "static", paddingRight: "1rem" }} />
+                    <img src="/svgs/Logo.svg" />
                   </div>
                   <div>
                     <p>
-                      <span style={{ fontSize: "2rem" }}>Digigate</span> Solutions
+                      <span id={styles.digigate} style={{ fontSize: "2rem" }}>Digigate</span> Solutions
                     </p>
                   </div>
                 </div>
-                <p> We are an IT and software development company based in Ghana with over 20 years of experience 🇬🇭💪🏾</p>
+                <p className={styles.bodytext}> We are an IT and software development company based in Ghana with over 20 years of experience 🇬🇭💪🏾</p>
 
-                <p style={{ fontSize: "1.2rem", color: "var(--lightpurple)" }}>
+                <p className={styles.bodytextinner}>
                   Our vision is to become one of the world’s leading software development companies, using advanced technologies and ensuring clients satisfaction.
-              </p>
-                <div>
-                  <img src="/svgs/technologies.svg" style={{ width: "25%", height: "auto", marginTop: "7rem" }} />
-                </div>
+                </p>
+
               </motion.div>
-              <motion.div variants={childrightAnimation} initial="hidden" animate={controls} transition={{ duration: 1, delay: 0.8 }} style={{ flex: 1 }}>
+              <motion.div id={styles.codeSvg} variants={childrightAnimation} initial="hidden" animate={controls} transition={{ duration: 1, delay: 0.8 }} style={{ flex: 1 }}>
                 <img src="/svgs/code.svg" style={{ width: "100%", height: "auto", position: "relative" }} />
               </motion.div>
             </div>
 
-            <img src='/svgs/inclined lines.svg' style={{ top: "-2%", left: "30%", width: "7%", height: "auto" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/inclined lines.svg' style={{ top: "-2%", left: "30%", width: "7%", height: "auto" }} />
 
-            <img src='/svgs/diamond shape.svg' style={{ top: "8%", left: "15%", width: "1.5%", height: "auto", opacity: "70%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} className={styles.technologysvg} src="/svgs/technologies.svg" />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/diamond shape.svg' style={{ top: "8%", left: "15%", width: "1.5%", height: "auto", opacity: "70%" }} />
 
-            <img src='/svgs/dotsfaded.svg' style={{ top: "25%", left: "-10%", width: "25%", height: "auto" }} />
-            <img src='/svgs/square1.svg' style={{ top: "35%", right: "43%", width: "3%", height: "auto" }} />
-            <img src='/svgs/square1.svg' style={{ top: "72%", left: "-1rem", width: "10%", height: "auto", transform: "rotate(30deg)" }} />
-            <img src='/svgs/dottriangle.svg' style={{ bottom: "0%", left: "45%", width: "2%", height: "auto", transform: "rotate(45deg)", opacity: "90%" }} />
-            <img src='/svgs/square1.svg' style={{
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/dotsfaded.svg' style={{ top: "25%", left: "-10%", width: "25%", height: "auto" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/square1.svg' style={{ top: "35%", right: "43%", width: "3%", height: "auto" }} />
+            <motion.img variants={tinySvg1} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/square1.svg' style={{ bottom: "-25%", left: "-1rem", width: "10%", height: "auto", transform: "rotate(30deg)" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/dottriangle.svg' style={{ bottom: "13%", left: "10%", width: "2%", height: "auto", transform: "rotate(45deg)", opacity: "50%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls} transition={{ duration: 2 }} src='/svgs/square1.svg' style={{
               top: "83%", right: "8%", width: "3%", height: "auto", transform: "rotate(60deg)"
             }} />
 
@@ -300,12 +364,12 @@ export default function Landingpage() {
           </motion.section>
 
 
-          <InView threshold={0.5} as="div" onChange={(inViewElement, entry) => { inViewElement ? controls2.start('visible') : false }} style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingTop: "10vh", position: "relative", marginBottom: "14%" }}>
+          <InView threshold={0.5} className={styles.aboutusbottom} as="div" onChange={(inViewElement, entry) => { inViewElement ? controls2.start('visible') : false }}>
             <div style={{ width: "50%" }}>
-              <img src='/svgs/peopleworking.svg' style={{ position: "relative", float: "left", width: "100%", height: "auto", paddingLeft: "5rem" }} />
+              <motion.img variants={tinySvg} id={styles.peopleworkingsvg} initial="hidden" animate={controls2} transition={{ duration: 2 }} src='/svgs/peopleworking.svg' />
             </div>
 
-            <div style={{ width: "50%", paddingLeft: "10%" }}>
+            <div className={styles.textcontainer}>
               <h2 style={{ fontSize: "2.2vw", marginBottom: "2rem" }}>Technology-driven</h2>
               <motion.div variants={underlineVariant} initial="hidden" animate={controls2} transition={{ duration: 1 }} style={{ backgroundColor: "rgb(139,153,209)", width: "15%", height: "1vh", borderRadius: "3rem" }}></motion.div>
               <p style={{ fontSize: "1.3vw", color: "var(--lightpurple)", width: "100%", textAlign: "left", paddingTop: "2vh", paddingRight: "5rem" }}>
@@ -324,20 +388,20 @@ export default function Landingpage() {
             <h2>
               Our Services
             </h2>
-            <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", padding: "0 5rem", flex: 1 }}>
+            <div className={styles.servicescontainer} style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", padding: "0 5rem", flex: 1 }}>
               <motion.img variants={serviceVariant} initial="hidden" animate={controls3} src='/svgs/service1.svg' transition={{ duration: 0.5, delay: 0.5 }} style={{ position: "relative", width: "32%", height: "auto", display: "inline-block" }} />
               <motion.img variants={serviceVariant} initial="hidden" animate={controls3} src='/svgs/service2.svg' transition={{ duration: 0.5, delay: 1 }} style={{ position: "relative", width: "32%", height: "auto", display: "inline-block" }} />
               <motion.img variants={serviceVariant} initial="hidden" animate={controls3} src='/svgs/service3.svg' transition={{ duration: 0.5, delay: 1.5 }} style={{ position: "relative", width: "32%", height: "auto", display: "inline-block" }} />
             </div>
 
-            <img src="/svgs/longdots.svg" style={{ top: "14%", left: "28%", width: "auto", height: "40vh", opacity: "50%" }} />
-            <img src='/svgs/inclined lines.svg' style={{ top: "45%", left: "5%", width: "5%", height: "auto", opacity: "50%" }} />
-            <img src='/svgs/dottriangle.svg' style={{ top: "80%", left: "10%", width: "3.2%", height: "auto", opacity: "60%" }} />
-            <img src='/svgs/dottriangle.svg' style={{ top: "20%", left: "10%", width: "1.5%", height: "auto", opacity: "60%", transform: "rotate(40deg)" }} />
-            <img src='/svgs/square1.svg' style={{ top: "80%", left: "45%", width: "3.2%", height: "auto" }} />
-            <img src='/svgs/inclined lines.svg' style={{ top: "70%", right: "5%", width: "8%", height: "auto", opacity: "30%" }} />
-            <img src='/svgs/circle.svg' style={{ top: "26%", right: "10%", width: "2%", height: "auto", opacity: "50%" }} />
-            <img src='/svgs/plus2.svg' style={{ top: "34%", left: "55%", width: "1.4%", height: "auto", opacity: "10%" }} />
+            <motion.img id={styles.longDots} variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src="/svgs/longdots.svg" style={{ top: "14%", left: "28%", width: "auto", height: "40vh", opacity: "30%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/inclined lines.svg' style={{ top: "45%", left: "5%", width: "5%", height: "auto", opacity: "50%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/dottriangle.svg' style={{ top: "80%", left: "10%", width: "3.2%", height: "auto", opacity: "60%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/dottriangle.svg' style={{ top: "20%", left: "10%", width: "1.5%", height: "auto", opacity: "60%", transform: "rotate(40deg)" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/square1.svg' style={{ top: "80%", left: "45%", width: "3.2%", height: "auto" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/inclined lines.svg' style={{ top: "70%", right: "5%", width: "8%", height: "auto", opacity: "30%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/circle.svg' style={{ top: "26%", right: "10%", width: "2%", height: "auto", opacity: "50%" }} />
+            <motion.img variants={tinySvg} initial="hidden" animate={controls3} transition={{ duration: 2 }} src='/svgs/plus2.svg' style={{ top: "34%", left: "55%", width: "1.4%", height: "auto", opacity: "10%" }} />
 
 
             <motion.svg className={styles.arrowSvg2} xmlns="http://www.w3.org/2000/svg" width="258.695" height="287.135" viewBox="0 0 258.695 287.135">
@@ -350,7 +414,7 @@ export default function Landingpage() {
 
 
           <section id={styles.ourteam}>
-            <img src='/svgs/technology Network.svg' style={{ width: "30%", height: "auto", left: "-5%", opacity: "50%" }} />
+            <img src='/svgs/technology Network.svg' id={styles.technetworksvg} style={{ width: "30%", height: "auto", left: "-5%", opacity: "50%" }} />
             <div className={styles.heading}>
               <h2>
                 Meet Our Team
@@ -362,36 +426,37 @@ export default function Landingpage() {
             <div className={styles.teamcontainer}>
               <motion.div className={styles.card} style={{ y: y2 }}>
 
-                <img src='/svgs/avatar1.svg' style={{ position: "absolute", top: "-25%", zIndex: 2 }} />
+                <div className={styles.avatar}>
+                </div>
 
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Benjamin Ako Afrasah</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>Lead Software Engineer</span>
-                  <p style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
+                  <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
                     I spearhead mobile app development at Digigate indulging all my experience working with companies in both the USA & Ghana.
                   </p>
                 </div>
               </motion.div>
-              <motion.div className={styles.card} style={{ display: "relative", top: "3rem", y: y1 }}>
+              <motion.div id={styles.ceoCard} className={styles.card} style={{ display: "relative", top: "3rem", y: y1 }}>
 
-                <img src='/svgs/avatar1.svg' style={{ position: "absolute", top: "-25%", zIndex: 2 }} />
+                <div className={styles.avatar}>
+                </div>
 
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Joseph Sakyi Baah</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>CEO</span>
-                  <p style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
+                  <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
                     I have worked for over 12 years developing E-health & telemedicine systems for institutions all across West Africa.
                   </p>
                 </div>
               </motion.div>
-              <motion.div className={styles.card} style={{ y: y2 }}>
-
-                <img src='/svgs/avatar1.svg' style={{ position: "absolute", top: "-25%", zIndex: 2 }} />
-
+              <motion.div id={styles.timothyCard} className={styles.card} style={{ y: y2 }}>
+                <div className={styles.avatar}>
+                </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Timothy Kofi Amo</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>Lead Frontend Engineer</span>
-                  <p style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
+                  <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
                     I develop web applications at Digigate with the sole aim of giving the best user experience and high performance systems.
                   </p>
                 </div>
@@ -399,9 +464,9 @@ export default function Landingpage() {
             </div>
 
 
-            <div style={{ textAlign: "center", marginTop: "3rem", paddingBottom: "3rem", y: y1 }}>
+            <div style={{ textAlign: "center", marginTop: "3rem", paddingBottom: "3rem" }}>
               <span style={{ fontSize: "1.2rem", color: "rgba(58,62,144,0.73)" }}> Ask our clients </span>
-              <div className="company-logos" style={{ display: "flex", justifyContent: "space-evenly", paddingTop: "4rem", width: "70%", marginRight: "auto", marginLeft: "auto", alignItems: "center" }} >
+              <div id={styles.companyLogos} className="company-logos" style={{ display: "flex", justifyContent: "space-evenly", paddingTop: "4rem", width: "70%", marginRight: "auto", marginLeft: "auto", alignItems: "center" }} >
                 <img src="/svgs/google-2015.svg" />
                 <img src="/svgs/Netlify-02.svg" />
                 <img src="/svgs/TechCrunch-01.svg" />
@@ -423,7 +488,7 @@ export default function Landingpage() {
                 <h2 style={{ fontSize: "2rem", color: "#429DB4", textAlign: "left", marginBottom: "6rem" }}>
                   Let's hear it.
                 </h2>
-                <img ref={svgElement} src="/svgs/send us a message.svg" style={{ position: "relative", width: "70%", height: "auto", zIndex: 2 }} />
+                <img ref={svgElement} className={styles.sendmessageSvg} src="/svgs/send us a message.svg" style={{ position: "relative", width: "70%", height: "auto", zIndex: 2 }} />
               </div>
 
               <form className={styles.contactform} action="#" method="post" onSubmit={formik.handleSubmit} style={{ flex: "40%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", padding: "2rem 0" }}>
@@ -440,7 +505,7 @@ Describe your idea in a few words and lets make it a reality. </span>
               </form>
             </div>
 
-            <motion.img variants={contactSvgVariant} initial="hidden" animate={controls4} transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }} src="/svgs/big circle.svg" style={{ width: "30%", height: "auto", top: "-20%", left: "-16%" }} />
+            <motion.img id={styles.bigCircle} variants={contactSvgVariant} initial="hidden" animate={controls4} transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }} src="/svgs/big circle.svg" style={{ width: "30%", height: "auto", top: "-20%", left: "-16%" }} />
             <motion.img variants={contactSvgVariant} initial="hidden" animate={controls4} transition={{ duration: 1, ease: "easeInOut", delay: 1.4 }} src="/svgs/dotsfaded.svg" style={{ width: "24%", height: "auto", top: "55%", left: "-5%", opacity: "50%" }} />
             <motion.img variants={contactSvgVariant} initial="hidden" animate={controls4} transition={{ duration: 1, ease: "easeInOut", delay: 0.4 }} src="/svgs/bigcircle2.svg" style={{ width: "1%", height: "auto", top: "14%", right: "6%" }} />
             <motion.img variants={contactSvgVariant} initial="hidden" animate={controls4} transition={{ duration: 1, ease: "easeInOut", delay: 0.8 }} src="/svgs/circle3.svg" style={{ width: "1.4%", height: "auto", top: "5%", left: "45%" }} />

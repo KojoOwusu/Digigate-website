@@ -279,7 +279,7 @@ export default function Landingpage() {
         </AnimatePresence>
 
         <Navbar scrolledState={scrolled} modalOpenHandler={modalHandler} />
-        <motion.img initial={{ x: -1025 }} animate={{ x: 0 }} transition={{ duration: 2, ease: [0.4, 0.01, -0.05, 0.9] }} src='/svgs/first curve.svg' className={styles.giantCurve} style={{ position: "absolute", top: "-6rem", right: "-20rem", width: "70%", height: "auto", zIndex: 1, minWidth: "50%" }} />
+        <motion.img initial={{ x: -1025 }} animate={{ x: 0 }} transition={{ duration: 2, ease: [0.4, 0.01, -0.05, 0.9] }} src='/svgs/first curve.svg' className={styles.giantCurve} />
         <div className={styles.bodycontainer} >
           <section id="home" className={scrolled ? styles.mainsectionpadded : styles.mainsectionstyles} >
             <motion.div initial={{ x: -100, opacity: 0 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className={styles.maintextcontainer}>
@@ -365,7 +365,7 @@ export default function Landingpage() {
 
 
           <InView threshold={0.5} className={styles.aboutusbottom} as="div" onChange={(inViewElement, entry) => { inViewElement ? controls2.start('visible') : false }}>
-            <div style={{ width: "50%" }}>
+            <div className={styles.imageContainer} style={{ width: "50%" }}>
               <motion.img variants={tinySvg} id={styles.peopleworkingsvg} initial="hidden" animate={controls2} transition={{ duration: 2 }} src='/svgs/peopleworking.svg' />
             </div>
 

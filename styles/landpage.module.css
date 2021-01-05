@@ -10,6 +10,18 @@ body.modalopen {
 	width: 100%;
 	overflow: hidden !important;
 }
+
+.mainwrapper .giantCurve {
+	position: absolute;
+	top: -6rem;
+	right: -20rem;
+	width: 70%;
+	height: auto;
+	z-index: 1;
+	min-width: 50%;
+	clip-path: view-box;
+}
+
 .mainwrapper h1 {
 	font-family: "ultra", serif;
 	font-size: 3.4rem;
@@ -31,7 +43,7 @@ body.modalopen {
 	position: relative;
 	padding-left: 5rem;
 	padding-top: 8%;
-	max-width: 50%;
+	width: 50%;
 	z-index: 3;
 }
 
@@ -162,6 +174,7 @@ body.modalopen {
 	padding-top: 10vh;
 	position: relative;
 	margin-bottom: 14%;
+	flex: 1;
 }
 
 .aboutsection .aboutus {
@@ -366,7 +379,6 @@ body.modalopen {
 #ourteam .teamcontainer .card {
 	position: relative;
 	width: 22%;
-	max-width: 30%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -699,7 +711,7 @@ body.modalopen {
 
 	.modal {
 		width: 100%;
-		height: 40%;
+		height: 50%;
 		background-color: white;
 		z-index: 20;
 		margin-top: 0px;
@@ -724,14 +736,215 @@ body.modalopen {
 	}
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
 	.mainwrapper .giantCurve {
 		display: inline-block;
-		width: 500px;
-		height: 200px;
+		width: 80%;
+		height: auto;
+		right: 0rem;
+		top: 0rem;
+		opacity: 20%;
+	}
+
+	.bodycontainer .mainsectionstyles {
+		padding: 4rem 0rem;
+	}
+
+	.bodycontainer .maintextcontainer {
+		padding-left: 2.4rem;
+
+		width: 100%;
+	}
+
+	.bodycontainer .maintextcontainer .getstartedbutton {
+		font-size: 1.4rem;
+		padding: 2rem 1rem;
+		width: 40%;
 	}
 
 	.bodycontainer .maintextcontainer h1 {
+		font-size: 3.5rem;
+	}
+	.bodycontainer .bannertext h1 {
+		font-size: 4rem;
+	}
+	.bodycontainer .maintextcontainer p {
 		font-size: 1.5rem;
+	}
+	.bodycontainer .laptopsvg {
+		display: none;
+	}
+
+	.aboutsection {
+		padding-left: 1.4rem;
+		padding-right: 2rem;
+	}
+	.aboutsection h2 {
+		font-size: 3rem;
+		text-align: right;
+		padding-right: 3rem;
+	}
+
+	.aboutsection .arrowSvg {
+		width: 28%;
+		top: 3%;
+		left: 10%;
+	}
+
+	.aboutuscontainer .aboutus .bodytext {
+		font-size: 2.5rem;
+		text-align: left;
+	}
+
+	.aboutuscontainer .aboutus .bodytextinner {
+		font-size: 1.8rem;
+		text-align: right;
+		margin-left: 30%;
+	}
+
+	.aboutsection .aboutus {
+		width: 100%;
+		padding-left: 2rem;
+	}
+	.aboutsection .aboutuscontainer {
+		flex-direction: column;
+	}
+	.aboutsection .aboutuscontainer {
+		margin-bottom: 0rem;
+	}
+
+	.aboutsection .technologysvg {
+		position: relative;
+		margin-top: 0rem;
+		margin-bottom: 5rem;
+	}
+
+	.bodycontainer .aboutusbottom {
+		padding: 2rem 1.4rem;
+		flex-direction: column;
+		align-items: center;
+	}
+	.bodycontainer .aboutusbottom #peopleworkingsvg {
+		width: 100%;
+		height: auto;
+		padding: 2rem 2rem;
+		margin-left: auto;
+		margin-right: auto;
+		flex: 1;
+	}
+	.bodycontainer .aboutusbottom .imageContainer {
+		width: 100% !important;
+	}
+
+	.bodycontainer .aboutusbottom .textcontainer {
+		padding-left: 1.4rem;
+		width: 90%;
+		flex: 1;
+	}
+
+	.bodycontainer .aboutusbottom .textcontainer > h2 {
+		font-size: 3.1rem !important;
+	}
+	.bodycontainer .aboutusbottom .textcontainer p {
+		font-size: 1.8rem !important;
+	}
+
+	.bodycontainer .servicesStyles {
+		padding-top: 3rem;
+	}
+
+	.bodycontainer .servicesStyles h2 {
+		font-size: 6rem;
+		left: -10%;
+	}
+
+	.bodycontainer .servicesStyles .servicescontainer {
+		flex-direction: column !important;
+		width: 100% !important;
+		padding: 2rem 1.4rem !important;
+		align-items: center;
+	}
+	.bodycontainer .servicesStyles .servicescontainer img {
+		width: 70% !important;
+		height: auto;
+	}
+
+	.bodycontainer .servicesStyles .arrowSvg2 {
+		display: none !important;
+	}
+
+	.mainsectionpadded {
+		padding-bottom: 2rem;
+		padding-top: 5rem;
+	}
+
+	#ourteam h2 {
+		font-size: 2.8rem;
+	}
+
+	#ourteam .heading p {
+		font-size: 1.5em;
+		width: 90%;
+	}
+
+	#ourteam .teamcontainer {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 5rem;
+		justify-content: space-between;
+	}
+
+	#ourteam .teamcontainer .card {
+		width: 50%;
+		margin-bottom: 10rem;
+		transform: translateY(0px) !important;
+	}
+	#ceoCard {
+		top: 0px !important;
+	}
+	#ourteam .teamcontainer #timothyCard {
+		margin-bottom: 2rem !important;
+	}
+	#companyLogos {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		width: 100% !important;
+		padding-top: 2rem !important;
+	}
+
+	#companyLogos img {
+		padding: 1rem;
+		width: 15%;
+		height: auto;
+	}
+
+	.contactus {
+		padding-top: 5rem;
+	}
+	.contactus .contactuscontainer {
+		flex-direction: column;
+		align-items: center;
+	}
+	.contactus .contactuscontainer .sendmessageSvg {
+		width: 80% !important;
+		margin: auto;
+	}
+
+	.contactus .contactform {
+		padding: 2rem 2rem !important;
+		padding-top: 5rem;
+		width: 100%;
+		margin: auto !important;
+	}
+	.contactus .contactform input,
+	.contactus .contactform textarea {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.contactus .contactuscontainer .contactform span {
+		text-align: center !important;
+		width: 100% !important;
 	}
 }

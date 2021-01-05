@@ -121,3 +121,28 @@
 		font-size: 0.9rem;
 	}
 }
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+	.footer {
+		padding: 2rem 1.6rem;
+	}
+	.footer h3 {
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
+	}
+	.footer p {
+		font-size: 1.5rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	#concentricBig {
+		display: none !important;
+	}
+	.footer .footercontainer {
+		flex-wrap: wrap;
+		align-items: center !important;
+	}
+	.footer .footercontainer .linkscontainer {
+		padding-left: 5rem;
+		padding-top: 3rem;
+	}
+}

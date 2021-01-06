@@ -297,7 +297,7 @@ export default function Landingpage() {
                 </motion.div>
               </Link>
             </motion.div>
-            <motion.img initial={{ x: 1000 }} animate={{ x: 0 }} transition={{ duration: 1.5, type: "spring", mass: 0.3, damping: 7, delay: 1.3 }} className={styles.laptopsvg} src='/svgs/laptopsvg.svg' />
+            <motion.img initial={{ x: 1000 }} animate={{ x: 0 }} transition={{ duration: 1.5, type: "spring", mass: 0.3, damping: 7, delay: 1.3 }} className={styles.laptopsvg} src='/svgs/Laptopsvg.svg' />
 
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/dots.svg' style={{ position: "absolute", top: "2rem", left: "-2rem", width: "16%", height: "auto" }} />
             <motion.img initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 2 }} src='/svgs/dottriangle.svg' style={{ top: "0", left: "60%", width: "3.1%", height: "auto" }} />

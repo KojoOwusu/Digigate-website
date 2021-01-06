@@ -10,7 +10,7 @@ export default function Navbar(props) {
         <div className={scrolledState ? styles.navsticky : styles.navbar}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <img src='/svgs/Logo.svg' alt="logo" />
+                    <img src='svgs/Logo.svg' alt="logo" />
                 Digigate
                 </div>
 
@@ -27,7 +27,7 @@ export default function Navbar(props) {
 
                     </li>
                 </ul>
-                <img src="/svgs/hamburger.svg" alt="hamburger" className={styles.hamburgericon} onClick={modalOpenHandler} />
+                <img src="svgs/hamburger.svg" alt="hamburger" className={styles.hamburgericon} onClick={modalOpenHandler} />
 
             </div>
 

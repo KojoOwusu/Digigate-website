@@ -11,7 +11,7 @@ export default function Footer() {
             </p>
             <div className={styles.footercontainer} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: "2%", paddingBottom: "10%" }}>
                 <div className={styles.logo}>
-                    <img src='/svgs/Logo.svg' />
+                    <img src='svgs/Logo.svg' />
                     <div className={styles.logotext}>
                         <span >Digigate</span>
                         <span> Solutions</span>
@@ -86,9 +86,9 @@ export default function Footer() {
                             <li>
                                 <div id={styles.logolist}>
 
-                                    <img src="/svgs/twitter.svg" />
-                                    <img src="/svgs/linkedin.svg" />
-                                    <img src="/svgs/facebook.svg" />
+                                    <img src="svgs/twitter.svg" />
+                                    <img src="svgs/linkedin.svg" />
+                                    <img src="svgs/facebook.svg" />
 
                                 </div>
                             </li>
@@ -98,8 +98,8 @@ export default function Footer() {
 
                 </div>
             </div>
-            <img id={styles.concentricBig} src="/svgs/concentric-circle2.svg" style={{ width: "50%", height: "auto", top: "20%", left: "", zIndex: "1" }} />
-            <img src="/svgs/concentric-circle2.svg" style={{ width: "10%", height: "auto", top: "5%", right: "10%" }} />
+            <img id={styles.concentricBig} src="svgs/concentric-circle2.svg" style={{ width: "50%", height: "auto", top: "20%", left: "", zIndex: "1" }} />
+            <img src="svgs/concentric-circle2.svg" style={{ width: "10%", height: "auto", top: "5%", right: "10%" }} />
         </div>
     )
 }

@@ -414,7 +414,7 @@ export default function Landingpage() {
 
 
           <section id={styles.ourteam}>
-            <img src='/svgs/technology Network.svg' id={styles.technetworksvg} style={{ width: "50%", height: "auto", left: "-5%", opacity: "65%" }} />
+            <img src='/svgs/technology Network.svg' id={styles.technetworksvg} style={{ width: "50%", height: "auto", left: "-5%", opacity: "60%" }} />
             <div className={styles.heading}>
               <h2>
                 Meet Our Team

@@ -106,7 +106,8 @@
 		padding-top: 3.2rem;
 	}
 	#concentricBig {
-		display: none !important;
+		width: 70% !important;
+		top: 40% !important;
 	}
 
 	#projects {

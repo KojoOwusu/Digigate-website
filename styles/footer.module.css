@@ -30,7 +30,7 @@
 	justify-content: flex-start;
 	align-items: center;
 	color: white;
-	z-index: 10;
+	z-index: 4;
 }
 .footer .logo img {
 	position: relative;
@@ -46,7 +46,7 @@
 .footer .linkscontainer {
 	display: flex;
 	padding-top: 1rem;
-	z-index: 10;
+	z-index: 4;
 }
 
 .footer .linklist ul {
@@ -123,21 +123,22 @@
 		font-size: 0.9rem;
 	}
 }
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
 	.footer {
 		padding: 2rem 1.6rem;
 	}
 	.footer h3 {
 		font-size: 2rem;
 		margin-bottom: 0.5rem;
+		padding-left: 2rem;
 	}
 	.footer p {
 		font-size: 1.5rem;
 		margin-top: 1rem;
 		margin-bottom: 1rem;
+		padding-left: 2rem;
 	}
 	#concentricBig {
-		display: none !important;
 	}
 	.footer .footercontainer {
 		flex-wrap: wrap;
@@ -146,5 +147,6 @@
 	.footer .footercontainer .linkscontainer {
 		padding-left: 5rem;
 		padding-top: 3rem;
+		margin: auto;
 	}
 }

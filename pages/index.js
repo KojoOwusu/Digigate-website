@@ -414,7 +414,7 @@ export default function Landingpage() {
 
 
           <section id={styles.ourteam}>
-            <img src='/svgs/technology Network.svg' id={styles.technetworksvg} style={{ width: "30%", height: "auto", left: "-5%", opacity: "50%" }} />
+            <img src='/svgs/technology Network.svg' id={styles.technetworksvg} style={{ width: "50%", height: "auto", left: "-5%", opacity: "65%" }} />
             <div className={styles.heading}>
               <h2>
                 Meet Our Team
@@ -429,7 +429,7 @@ export default function Landingpage() {
                 <div className={styles.avatar}>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem", backgroundColor: "white" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Benjamin Ako Afrasah</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>Lead Software Engineer</span>
                   <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
@@ -442,7 +442,7 @@ export default function Landingpage() {
                 <div className={styles.avatar}>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem", backgroundColor: "white" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Joseph Sakyi Baah</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>CEO</span>
                   <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>
@@ -453,7 +453,7 @@ export default function Landingpage() {
               <motion.div id={styles.timothyCard} className={styles.card} style={{ y: y2 }}>
                 <div className={styles.avatar}>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "5rem", backgroundColor: "white" }}>
                   <span style={{ color: "#32407B", padding: "1rem 0", fontSize: "1.4rem" }}>Timothy Kofi Amo</span>
                   <span style={{ color: "rgba(21,24,97,0.49)" }}>Lead Frontend Engineer</span>
                   <p id={styles.teamBodytext} style={{ color: "rgba(21,24,97,0.49)", width: "80%", paddingTop: "2rem", marginBottom: "5rem", fontSize: "1.2rem", textAlign: "center" }}>

@@ -360,6 +360,11 @@ body.modalopen {
 	z-index: -1;
 }
 
+#ourteam .heading {
+	position: relative;
+	z-index: 2;
+}
+
 #ourteam h2 {
 	text-align: center;
 	margin-top: 5rem;
@@ -370,16 +375,20 @@ body.modalopen {
 	text-align: justfiy;
 	width: 70%;
 	font-size: 1.3rem;
-	color: rgba(21, 24, 97, 0.4);
+	color: rgba(21, 24, 97, 0.5);
 	margin-left: auto;
 	margin-right: auto;
-	z-index: 2;
 }
+#technetworksvg {
+	z-index: 1 !important;
+}
+
 #ourteam .teamcontainer {
 	padding: 10rem 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+	position: relative;
 }
 #ourteam .teamcontainer .card {
 	position: relative;
@@ -390,6 +399,7 @@ body.modalopen {
 	-webkit-box-shadow: 0px 6px 20px 1px #b5b5b5;
 	box-shadow: 0px 6px 20px 1px #b5b5b5;
 	border-bottom: 0.5rem solid #7987c3;
+	z-index: 2;
 }
 
 #ourteam .teamcontainer .card .avatar {
@@ -590,8 +600,9 @@ body.modalopen {
 	}
 
 	#ourteam #technetworksvg {
-		width: 80% !important;
+		width: 100% !important;
 		z-index: 1 !important;
+		left: -7rem !important;
 	}
 
 	#ourteam h2 {
@@ -781,6 +792,7 @@ body.modalopen {
 	}
 
 	.aboutsection {
+		margin-top: 10rem;
 		padding-left: 1.4rem;
 		padding-right: 2rem;
 	}

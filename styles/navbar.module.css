@@ -3,7 +3,7 @@
 	top: 0;
 	width: 100%;
 	background-color: rgba(11, 14, 49, 0);
-	z-index: 4;
+	z-index: 5;
 	transition: all 0.3ms;
 }
 
@@ -17,7 +17,6 @@
 	padding-left: 5rem;
 	padding-right: 5rem;
 	align-items: center;
-	padding-top: 1.2rem;
 }
 
 #navlink {
@@ -61,7 +60,7 @@
 	position: fixed;
 	top: 0px;
 	width: 100%;
-	z-index: 4;
+	z-index: 5;
 	transition: all 0.3s ease-in-out;
 	background-color: rgba(11, 14, 49, 1);
 	box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.18);

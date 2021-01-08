@@ -17,7 +17,7 @@ body.modalopen {
 	right: -20rem;
 	width: 70%;
 	height: auto;
-	z-index: 1;
+	z-index: 3;
 	min-width: 50%;
 	clip-path: view-box;
 }
@@ -62,7 +62,7 @@ body.modalopen {
 	animation: float 6s ease-in-out infinite;
 	animation-delay: 3s;
 	user-select: none;
-	z-index: 2;
+	z-index: 4;
 }
 @keyframes float {
 	0% {

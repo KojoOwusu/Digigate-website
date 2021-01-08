@@ -340,7 +340,7 @@ export default function Landingpage() {
 
               </motion.div>
               <motion.div id={styles.codeSvg} variants={childrightAnimation} initial="hidden" animate={controls} transition={{ duration: 1, delay: 0.8 }} style={{ flex: 1 }}>
-                <img src="/svgs/code.svg" style={{ width: "100%", height: "auto", position: "relative" }} />
+                <img src="/svgs/code.svg" style={{ width: "100%", height: "auto", position: "relative", zIndex: "2" }} />
               </motion.div>
             </div>
 
